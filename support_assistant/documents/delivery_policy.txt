@@ -1,0 +1,7 @@
+Zepto Delivery Policy
+
+Zepto aims to deliver most orders within 10 to 20 minutes depending on location.
+
+Delivery time may increase due to weather conditions, traffic, high demand, or operational issues.
+
+Customers can track their orders in real time using the Zepto application.

@@ -1,0 +1,7 @@
+Zepto Cancellation Policy
+
+Customers can cancel an order before it is packed.
+
+Once the order has been packed or dispatched, cancellation may not be possible.
+
+If the cancellation is successful, the refund will be processed to the original payment method.

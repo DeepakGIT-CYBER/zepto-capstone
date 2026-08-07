@@ -1,0 +1,12 @@
+Zepto Refund Policy
+
+Customers may request a refund if:
+
+1. The wrong product was delivered.
+2. The product is damaged.
+3. The product is missing from the order.
+4. The order was cancelled but payment was deducted.
+
+Refund requests should be submitted through the Zepto app within 48 hours of delivery.
+
+Approved refunds are credited to the original payment method within 5 to 7 business days.
