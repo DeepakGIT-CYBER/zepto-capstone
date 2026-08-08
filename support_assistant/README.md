@@ -1,42 +1,102 @@
-\# Zepto Customer Support Assistant
+# Zepto Customer Support Assistant
 
+## Overview
 
+A document-grounded customer support assistant for Zepto.
 
-\## Overview
+The system uses Retrieval Augmented Generation (RAG) principles to answer customer questions using locally stored Zepto policy documents.
 
+The assistant can answer questions related to:
 
+- Delivery
+- Order tracking
+- Order cancellation
+- Refunds
+- Damaged products
+- Missing products
+- Wrong products
+- Delivery delays
 
-A document-grounded GenAI customer support assistant for Zepto.
+Questions outside the supported Zepto policy domain are rejected instead of generating unrelated answers.
 
+---
 
+## Features
 
-The system uses Retrieval Augmented Generation (RAG) to answer customer questions using Zepto policy documents stored locally.
+- Document-grounded customer support
+- Retrieval Augmented Generation (RAG)
+- Local policy document storage
+- Semantic search using Sentence Transformers
+- Vector search using ChromaDB
+- Query routing using LangGraph
+- FastAPI backend
+- Web-based chatbot interface
+- Source document display
+- Retrieval confidence score
+- Out-of-scope question handling
+- Concise customer-friendly responses
 
+---
 
+## Technologies Used
 
-The application uses:
+- Python
+- FastAPI
+- Uvicorn
+- LangGraph
+- ChromaDB
+- Sentence Transformers
+- HTML
+- CSS
+- JavaScript
 
+### Embedding Model
 
+The project uses:
 
-\- Sentence Transformers (`all-MiniLM-L6-v2`) for embeddings
+`all-MiniLM-L6-v2`
 
-\- ChromaDB for vector storage and retrieval
+from Sentence Transformers for generating semantic embeddings.
 
-\- LangGraph for query routing workflow
+---
 
-\- FastAPI for API serving
+## RAG Pipeline Architecture
 
+The complete pipeline is:
 
-
-\---
-
-
-
-\# RAG Pipeline Architecture
-
-
-
-The complete pipeline:
-
-
-
+```text
+User Question
+      |
+      v
+Web Chat Interface
+      |
+      v
+FastAPI /ask Endpoint
+      |
+      v
+LangGraph Workflow
+      |
+      v
+Intent Classification
+      |
+      +----------------------+----------------------+
+      |                                             |
+      | Policy Question                             | General Question
+      v                                             v
+ChromaDB Retrieval                         Out-of-Scope Response
+      |
+      v
+Sentence Transformer
+Embedding Search
+      |
+      v
+Relevant Policy Document
+      |
+      v
+Concise Policy Answer
+      |
+      v
+Source + Confidence
+      |
+      v
+Web Chat Interface
