@@ -1,0 +1,9 @@
+Zepto Delivery Fee Policy
+
+Standard delivery fee is INR 20 for orders below INR 199.
+
+Orders above INR 199 qualify for free standard delivery.
+
+Delivery charges may vary depending on customer location, demand conditions, and order details.
+
+Zepto Pass members receive free standard delivery benefits according to their membership plan.

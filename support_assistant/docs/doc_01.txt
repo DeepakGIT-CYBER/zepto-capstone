@@ -1,0 +1,7 @@
+notepad docs\doc_02.txt
+notepad docs\doc_03.txt
+notepad docs\doc_04.txt
+notepad docs\doc_05.txt
+notepad docs\doc_06.txt
+notepad docs\doc_07.txt
+notepad docs\doc_08.txt

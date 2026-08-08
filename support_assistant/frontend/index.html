@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zepto Support Assistant</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: none;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #7ed321;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #answer {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f1f8e9;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .loading {
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛒 Zepto Support Assistant</h1>
+
+    <div class="subtitle">
+        Ask questions about Zepto policies
+    </div>
+
+    <textarea
+        id="query"
+        placeholder="Example: What is the delivery fee?"
+    ></textarea>
+
+    <button onclick="askQuestion()">Ask Question</button>
+
+    <div id="answer">
+        Your answer will appear here.
+    </div>
+
+</div>
+
+<script>
+
+async function askQuestion() {
+
+    const query = document.getElementById("query").value.trim();
+    const answerBox = document.getElementById("answer");
+
+    if (!query) {
+        answerBox.textContent = "Please enter a question.";
+        return;
+    }
+
+    answerBox.innerHTML = '<span class="loading">Thinking...</span>';
+
+    try {
+
+        const response = await fetch("http://127.0.0.1:8000/ask", {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                query: query
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            answerBox.textContent =
+                "Error: " + (data.detail || "Something went wrong.");
+            return;
+        }
+
+        answerBox.textContent =
+            data.answer +
+            "\n\nSource: " +
+            (data.sources.length
+                ? data.sources.join(", ")
+                : "None") +
+            "\nConfidence: " +
+            data.confidence;
+
+    } catch (error) {
+
+        answerBox.textContent =
+            "Unable to connect to the Zepto Support Assistant API.";
+
+        console.error(error);
+    }
+}
+
+</script>
+
+</body>
+</html>
