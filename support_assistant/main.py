@@ -42,8 +42,8 @@ collection = client.get_or_create_collection(
 # ---------- Load Documents ----------
 
 if collection.count() == 0:
-    for file in os.listdir("docs"):
-        path = "docs/" + file
+    for file in os.listdir("documents"):
+        path = "documents/" + file
 
         with open(path, "r", encoding="utf-8") as f:
             text = f.read()
@@ -110,7 +110,7 @@ def retrieve_and_answer(state: State):
 
     state["answer"] = (
         "Based on the retrieved context: "
-        + chunk[:200]
+        + chunk
     )
 
     state["sources"] = [source]

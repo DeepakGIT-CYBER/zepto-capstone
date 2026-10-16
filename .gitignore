@@ -13,3 +13,9 @@ chroma_db/
 *.pkl
 zepto-support-assistant-working.zip
 
+
+# Temporary audit logs and local backups
+support_assistant/api-audit-*.log
+support_assistant/chroma_db_backup_*/
+support_assistant/*.backup*
+support_assistant/zepto-capstone/
