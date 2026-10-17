@@ -3,5 +3,4 @@ uvicorn
 pydantic
 langgraph
 chromadb
-sentence-transformers
 numpy
